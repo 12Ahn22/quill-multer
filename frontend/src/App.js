@@ -1,23 +1,47 @@
-import logo from './logo.svg';
 import './App.css';
+// Quill 에디터 가져오기
+import ReactQuill from 'react-quill';
+// axios
+import axios from 'axios';
+import { useMemo, useState } from 'react';
 
 function App() {
+  const [value, setValue] = useState('');
+
+  // Quill 에디터에서 사용하고싶은 모듈들을 설정한다.
+  const modules = useMemo(() => {
+    return {
+      toolbar: {
+        container: [
+          ['image'],
+          [{ header: [1, 2, 3, false] }],
+          ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+        ],
+      },
+    };
+  }, []);
+  // 위에서 설정한 모듈들 foramts을 설정한다
+  const formats = [
+    'header',
+    'bold',
+    'italic',
+    'underline',
+    'strike',
+    'blockquote',
+    'image',
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Quill 에디터 입니다.</h1>
+      <ReactQuill
+        theme='snow'
+        placeholder='플레이스 홀더'
+        value={value}
+        onChange={setValue}
+        modules={modules}
+        formats={formats}
+      />
     </div>
   );
 }
