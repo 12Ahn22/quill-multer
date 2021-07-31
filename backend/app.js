@@ -8,8 +8,8 @@ const cors = require('cors');
 const app = express();
 
 // 미들웨어 사용
-app.use(express.urlencoded({ extended: false })); // url 해석
-app.use(express.json()); // json 해석
+app.use(express.json()); // json 데이터 파서
+app.use(express.urlencoded({ extended: false })); // 내부 url 파서 사용
 app.use(express.static(path.join(__dirname + '/public'))); // 정적 파일 위치 설정
 
 app.use(cors()); // 우선 cors 무조곤 허용
@@ -34,8 +34,8 @@ const upload = multer({
       // 파일이름 + 현재시간밀리초 + 파일확장자명
       cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
     }
-  }),
-  limits: { fileSize: 5 * 1024 * 1024 } // 파일 크기 제한
+  })
+  // limits: { fileSize: 5 * 1024 * 1024 } // 파일 크기 제한
 });
 
 // 하나의 이미지 파일만 가져온다.
@@ -44,9 +44,11 @@ app.post('/img', upload.single('img'), (req, res) => {
   // 업로드된 이미지의 URL 경로를 프론트엔드로 반환한다.
   console.log('전달받은 파일', req.file);
   console.log('저장된 파일의 이름', req.file.filename);
-  res.json({
-    URL: '테스트중^^'
-  });
+
+  // 파일이 저장된 경로를 클라이언트에게 반환해준다.
+  const IMG_URL = `http://localhost:4050/uploads/${req.file.filename}`;
+  console.log(IMG_URL);
+  res.json({ url: IMG_URL });
 });
 
 // 포트는 임의로 4050으로 사용
