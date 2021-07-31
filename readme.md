@@ -13,23 +13,19 @@ Quill 에디터에 이미지를 업로드하면 해당 이미지는 **base64**�
 
 에디터 위의 버튼을 클릭하면 현재 **에디터 안에 있는 내용** = **데이터베이스**에 저장할 게시글 콘텐츠를 콘솔창에 출력한다.
 
-<figure style="display:block; text-align:center;">
   <img src="https://user-images.githubusercontent.com/44540726/127743774-791df9bd-a60b-4ccd-8b9f-5a8d39afa70e.png"
        style=" margin:0px auto">
-  <figcaption style="text-align:center; font-size:14px; color:#888">
+  <span style="text-align:center; font-size:14px; color:#888">
     에디터에 이미지를 올려봤다. <br/>영화- 스탈린이 죽었다. <span style="font-size:10px">제발 봐주세요.🤣</span>
-  </figcaption>
-</figure>
+  </span>
 
 **당연히 결과는..?**
 
-<figure style="display:block; text-align:center;">
   <img src="https://user-images.githubusercontent.com/44540726/127744036-a12c1435-ad9a-4974-a55b-6e2fda3d6e70.png"
        style=" margin:0px auto">
-  <figcaption style="text-align:center; font-size:14px; color:#888">
+  <span style="text-align:center; font-size:14px; color:#888">
     ^^..엄청난 base64.. 심지어 Show more..
-  </figcaption>
-</figure>
+  </span>
 
 얘를 데이터베이스(MySQL)에 저장하려고하면 데이터베이스가 몹시 놀란다.
 너무 길어서 저장되지않는다. 만약 저장이 되더라도 사진 한장이 저정도 길이인데 사진이 여러장이면 ...생각만해도 낭비다.
@@ -48,7 +44,7 @@ Quill 에디터에 이미지를 업로드하면 해당 이미지는 **base64**�
 2. 백엔드에 저장한 이미지를 URL로 접근할 수 있도록 한다.
 3. 이미지 URL을 에디터의 base64와 바꿔준다.
 > 그냥 어딘가에 저장하고 URL만 가져올 수 있으면된다.
-여기서는 express를 사용해 직접 이미지를 저장하는 백엔드 서버를 만드는 방법을 사용한다.
+> 여기서는 express를 사용해 직접 이미지를 저장하는 백엔드 서버를 만드는 방법을 사용한다.
 
 ### 필요한 것
 
