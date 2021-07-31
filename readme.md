@@ -15,17 +15,17 @@ Quill 에디터에 이미지를 업로드하면 해당 이미지는 **base64**�
 
   <img src="https://user-images.githubusercontent.com/44540726/127743774-791df9bd-a60b-4ccd-8b9f-5a8d39afa70e.png"
        style=" margin:0px auto">
-  <span style="text-align:center; font-size:14px; color:#888">
+  <p style="text-align:center; font-size:14px; color:#888">
     에디터에 이미지를 올려봤다. <br/>영화- 스탈린이 죽었다. <span style="font-size:10px">제발 봐주세요.🤣</span>
-  </span>
+  </p>
 
 **당연히 결과는..?**
 
   <img src="https://user-images.githubusercontent.com/44540726/127744036-a12c1435-ad9a-4974-a55b-6e2fda3d6e70.png"
        style=" margin:0px auto">
-  <span style="text-align:center; font-size:14px; color:#888">
+  <p style="text-align:center; font-size:14px; color:#888">
     ^^..엄청난 base64.. 심지어 Show more..
-  </span>
+  </p>
 
 얘를 데이터베이스(MySQL)에 저장하려고하면 데이터베이스가 몹시 놀란다.
 너무 길어서 저장되지않는다. 만약 저장이 되더라도 사진 한장이 저정도 길이인데 사진이 여러장이면 ...생각만해도 낭비다.
