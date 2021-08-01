@@ -404,3 +404,7 @@ const imageHandler = () => {
 
 ![quill이미지처리20210801_151304](https://user-images.githubusercontent.com/44540726/127761272-f645944b-b430-43ec-8b50-e7300bc73d27.gif)
 
+![Untitled](https://user-images.githubusercontent.com/44540726/127762095-d2c11853-2196-40f7-996d-4551eb9092e9.png)
+
+그리고 매우 짧아진 콘텐츠까지 완벽..
+
