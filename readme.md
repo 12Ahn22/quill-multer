@@ -1,6 +1,7 @@
 # 🔮 Quill 에디터에 이미지 넣기
 
 Quill 에디터로 게시판을 만들 때, 이미지 파일을 처리하는 방법을 정리한 레포지토리이다.
+
 팀 프로젝트를 진행하면서 에디터에서 이미지를 어떻게 저장해야하는 지 너무너무 고생했기 때문에 이렇게 글로 남기고 싶었다.
 
 <br/>
@@ -14,7 +15,7 @@ Quill 에디터에 이미지를 업로드하면 해당 이미지는 **base64**�
 <img src="https://user-images.githubusercontent.com/44540726/127743774-791df9bd-a60b-4ccd-8b9f-5a8d39afa70e.png"
        style=" margin:0px auto">
 
-  <p style="text-align:center; font-size:14px; color:#888">
+  <p style="font-size:14px; color:#888">
     에디터에 이미지를 올려봤다. <br/>영화- 스탈린이 죽었다. <span style="font-size:10px">제발 봐주세요.🤣</span>
   </p>
 
@@ -150,7 +151,7 @@ app.use(cors()); // 우선 cors 무조곤 허용
 
 #### multer 설정하기
 
-이미지 업로드를 위해 multer를 설정한다.
+이미지 업로드를 위해 `multer`를 설정한다.
 
 - [multer 한국어 DOC](https://github.com/expressjs/multer/blob/master/doc/README-ko.md)
 
@@ -183,15 +184,15 @@ const upload = multer({
 - **storage**
   파일이 저장될 위치 / 이름 설정
 
-  - multer.diskStorage
+  - **multer.diskStorage**
     파일을 디스크에 저장하기 위한 기능을 제공한다.
     우리가 사용할 저장소
-    - destination 이미지를 업로드할 장소
+    - **destination** 이미지를 업로드할 장소
       우리는 📁 public/uploads 에 이미지를 저장한다.
       미리 경로를 만들어 두자
-    - filename 업로드될 이미지 이름을 설정한다
+    - **filename** 업로드될 이미지 이름을 설정한다
       파일명이 겹치지않도록 파일이름 + 현재시간밀리초 + 파일확장자 형식으로 저장한다.
-  - limits
+  - **limits**
     파일 크기 제한 설정
 
 **multer 라우터 설정**
@@ -213,6 +214,7 @@ app.post('/img', upload.single('img'), (req, res) => {
 
 upload는 위에서 만든 multer 설정이다.
 한 번에 하나의 이미지만 받으면 되기때문에 `.single(필드네임)`을 사용한다.
+
 받은 파일은 `req.file`에 저장된다.
 클라이언트에 이미지 파일의 URL 경로를 반환해준다.
 http://localhost:4050/uploads/이미지파일명 으로 접근하는 것은
@@ -221,10 +223,12 @@ http://localhost:4050/uploads/이미지파일명 으로 접근하는 것은
 #### 리액트 설정하기
 
 리액트에서 Quill 에디터 설정을 해준다.
+
 Quill 에디터가 자체적으로 이미지를 처리하는 방식을 막고,
 내가 임의로 이미지를 처리해주어야한다.
 
 **에디터 설정**
+
 에디터에서 사용할 모듈들을 설정해준다.
 이미지를 직접 처리할 것이기 때문에 이미지는 따로 `handler`를 사용한다
 
@@ -273,8 +277,11 @@ const formats = [
   위에서 설정한 모듈들의 포맷 설정
 
 **리턴되는 JSX문**
+
 Quill 에디터에 위에서 설정한 모듈들을 넣어준다.
+
 `value`는 에디터 컨텐츠 값을 저장하는 state
+
 `quillRef`는 에디터에 직접 접근하기 위한 ref
 
 ```html
@@ -300,7 +307,7 @@ const quillRef = useRef(); // 에디터 접근을 위한 ref return (
 
 > Quill 에디터 css를 index.html에 링크로 넣어주는걸 잊지말자. css가 없으면 에디터가 출력이 안된다.
 
-index.html에 꼭 아래 코드를 넣어주자.
+`index.html`에 꼭 아래 코드를 넣어주자.
 
 ```html
 <link
@@ -310,12 +317,13 @@ index.html에 꼭 아래 코드를 넣어주자.
 ```
 
 **이미지 핸들러 함수**
+
 직접 이미지를 처리할 로직을 가지고 있는 함수
 
 이미지를 직접 처리하기로 하면 에디터 툴바에 이미지 클릭 시, 아무런 반응이 일어나지않는다.
 그렇기 때문에 이미지를 서버에 저장하고, 서버에 저장된 이미지가 에디터에 표시되는 것 하나부터 열까지 전부 여기서 처리해주면 된다.
 
-_처리 방식_
+_**처리 방식**_
 
 1. 이미지를 저장할 `input 요소`를 만든다
 2. 에디터에서 이미지 버튼을 클릭 시, 만든 input 요소가 클릭되게 한다
