@@ -384,7 +384,7 @@ const imageHandler = () => {
       // 2. 현재 에디터 커서 위치값을 가져온다
       const range = editor.getSelection();
       // 가져온 위치에 이미지를 삽입한다
-      editor.insertEmbed(range, 'image', IMG_URL);
+      editor.insertEmbed(range.index, 'image', IMG_URL);
     } catch (error) {
       console.log('실패했어요ㅠ');
     }
